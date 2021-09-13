@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecFlowProject1", "SpecFlowProject1\SpecFlowProject1.csproj", "{CFF1C35A-62F1-433F-93B8-C2F33D20A456}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CFF1C35A-62F1-433F-93B8-C2F33D20A456}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFF1C35A-62F1-433F-93B8-C2F33D20A456}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFF1C35A-62F1-433F-93B8-C2F33D20A456}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFF1C35A-62F1-433F-93B8-C2F33D20A456}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CA29C98C-CDAD-4490-B408-639782205BA4}
+	EndGlobalSection
+EndGlobal
