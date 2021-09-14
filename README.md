@@ -5,11 +5,15 @@ Sample Spec Flow Extent Reports
 
 ```xml
     <PackageReference Include="ExtentReports" Version="4.1.0" />
+
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+
     <PackageReference Include="SpecFlow.Plus.LivingDocPlugin" Version="3.9.5" /> 
     <PackageReference Include="SpecFlow.MsTest" Version="3.9.8" />
+
     <PackageReference Include="MSTest.TestAdapter" Version="2.1.2" />
     <PackageReference Include="MSTest.TestFramework" Version="2.1.2" /> 
+
     <PackageReference Include="FluentAssertions" Version="5.10.3" /> 
 ```
 
