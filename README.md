@@ -2,7 +2,7 @@
 Sample Spec Flow Extent Reports
 
 
-Base class
+## Base class
 
 ```csharp
 public abstract class ExtentBase
