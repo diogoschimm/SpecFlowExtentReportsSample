@@ -23,11 +23,12 @@ namespace SpecFlowProject1.Bases
 
         public static void BeforeTestRunBase(string testName)
         {
-            string path =  $"{AppDomain.CurrentDomain.BaseDirectory}\\{testName}\\index.html";
+            string path = $"{AppDomain.CurrentDomain.BaseDirectory}\\TestsResults\\{testName}\\index.html";
 
-            var htmlReporter = new ExtentHtmlReporter(path);
+            var htmlReporter = new ExtentHtmlReporter(path, AventStack.ExtentReports.Reporter.Configuration.ViewStyle.SPA);
             htmlReporter.Config.Theme = AventStack.ExtentReports.Reporter.Configuration.Theme.Standard;
-
+            htmlReporter.Config.DocumentTitle = $"Tests {testName}";
+            
             extent = new ExtentReports();
             extent.AttachReporter(htmlReporter);
         }
@@ -44,42 +45,21 @@ namespace SpecFlowProject1.Bases
 
         public void InsertReportingStepsBase()
         {
-            var stepType = ScenarioStepContext.Current.StepInfo.StepDefinitionType.ToString();
+            var currentScenarioStepContext = ScenarioStepContext.Current;
+            var stepType = currentScenarioStepContext.StepInfo.StepDefinitionType.ToString();
+
             if (_scenarioContext.TestError == null)
-            {
-                if (stepType == "Given")
-                    scenario.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text);
-                else if (stepType == "When")
-                    scenario.CreateNode<When>(ScenarioStepContext.Current.StepInfo.Text);
-                else if (stepType == "Then")
-                    scenario.CreateNode<Then>(ScenarioStepContext.Current.StepInfo.Text);
-                else if (stepType == "And")
-                    scenario.CreateNode<And>(ScenarioStepContext.Current.StepInfo.Text);
-            }
+                CreateScenaryNode(stepType, currentScenarioStepContext.StepInfo.Text);
+
             else if (_scenarioContext.TestError != null)
-            {
-                if (stepType == "Given")
-                {
-                    scenario.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text).Fail(_scenarioContext.TestError.Message);
-                }
-                else if (stepType == "When")
-                {
-                    scenario.CreateNode<When>(ScenarioStepContext.Current.StepInfo.Text).Fail(_scenarioContext.TestError.Message);
-                }
-                else if (stepType == "Then")
-                {
-                    scenario.CreateNode<Then>(ScenarioStepContext.Current.StepInfo.Text).Fail(_scenarioContext.TestError.Message);
-                }
-                else if (stepType == "And")
-                {
-                    scenario.CreateNode<And>(ScenarioStepContext.Current.StepInfo.Text).Fail(_scenarioContext.TestError.Message);
-                }
-            }
+                CreateScenaryNode(stepType, currentScenarioStepContext.StepInfo.Text).Fail(_scenarioContext.TestError.Message);
         }
 
-        public static void AfterTestRunBase()
+        public static void AfterTestRunBase() => extent.Flush();
+
+        private ExtentTest CreateScenaryNode(string stepType, string name)
         {
-            extent.Flush();
+            return scenario.CreateNode(new GherkinKeyword(stepType), name);
         }
     }
 }
